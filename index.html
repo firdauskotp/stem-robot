@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#7a1526" />
+  <meta name="description" content="Qosmo International School STEM showcase: a Raspberry Pi 5 proof of concept that classifies sample rubbish and displays results on a phone." />
+  <title>Smart Rubbish Detection | Qosmo International School STEM</title>
+  <link rel="icon" href="assets/qosmo-crest.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+  <div class="shell header-inner">
+    <a href="#top" class="brand" aria-label="Qosmo International School STEM Showcase home">
+      <img src="assets/qosmo-crest.png" alt="Qosmo International School crest" width="58" height="69" />
+      <span><strong>QOSMO</strong><small>INTERNATIONAL SCHOOL · STEM 2026</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" aria-label="Main navigation">
+      <a href="#how">How it works</a>
+      <a href="#demo">Explore</a>
+      <a href="#limitations">Limitations</a>
+      <a href="#future">What's next</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="tiny-star">✦</span> QOSMO STUDENT INNOVATION PROJECT</div>
+        <h1>Small project.<br /><em>Big green ideas.</em></h1>
+        <p class="hero-summary">Meet our <strong>Smart Rubbish Detection</strong> proof of concept: a camera spots familiar objects, a Raspberry Pi uses a trained AI model to classify them, and a phone shows the result.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#how">See how it works <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-ghost" href="#demo">Explore a sample</a>
+        </div>
+        <div class="honest-status"><span class="status-dot" aria-hidden="true"></span><span><b>Current stage:</b> detection + phone display only. <b>Not</b> an automatic rubbish collector yet.</span></div>
+      </div>
+      <div class="visual" aria-label="Illustration of a camera sending a prediction through a Raspberry Pi to a phone">
+        <div class="visual-bg-shape s1"></div><div class="visual-bg-shape s2"></div>
+        <div class="camera-unit">
+          <div class="camera-top"></div>
+          <div class="camera-body"><div class="camera-lens"><div class="lens-inner"></div></div><div class="camera-dot"></div></div>
+          <small>USB CAMERA</small>
+        </div>
+        <div class="signal signal-a"><span>image</span><i>→</i></div>
+        <div class="pi-unit"><span class="pi-icon">⌘</span><strong>Pi 5</strong><small>4GB · AI MODEL</small></div>
+        <div class="signal signal-b"><span>Wi-Fi</span><i>→</i></div>
+        <div class="phone-unit"><div class="phone-notch"></div><small class="phone-kicker">QOSMO AI VIEW</small><span class="phone-display-label">CAMERA RESULT</span><div class="phone-result"><span class="phone-result-icon">◉</span><strong>RUBBISH?</strong></div><div class="phone-screen-copy">Check the prediction<br/>before deciding.</div><span class="phone-fake-bar"></span><span class="phone-fake-bar short"></span></div>
+        <span class="illustration-note">Concept diagram · not a live feed</span>
+      </div>
+    </div>
+  </section>
+  <div class="signal-strip"><div class="shell strip-inner"><span>AI & MACHINE LEARNING</span><i>✳</i><span>COMPUTER VISION</span><i>✳</i><span>RASPBERRY PI</span><i>✳</i><span>STUDENT INNOVATION</span></div></div>
+
+  <section id="how" class="section shell">
+    <div class="section-heading"><span class="section-label">01 / THE IDEA</span><h2>From a real object<br/>to a phone screen.</h2><p>Our project joins four simple steps into one learning experience.</p></div>
+    <div class="steps">
+      <article class="step"><div class="step-n">01</div><div class="step-icon" aria-hidden="true">▱</div><h3>Show an object</h3><p>We place cotton, scrap paper, a pencil, or another sample where the camera can see it.</p></article>
+      <article class="step"><div class="step-n">02</div><div class="step-icon" aria-hidden="true">◉</div><h3>Capture an image</h3><p>A USB webcam sends the live image to the Raspberry Pi 5.</p></article>
+      <article class="step"><div class="step-n">03</div><div class="step-icon" aria-hidden="true">⌘</div><h3>Make a prediction</h3><p>Our Python and OpenCV-based model chooses <b>rubbish</b>, <b>not rubbish</b>, or <b>empty</b>.</p></article>
+      <article class="step"><div class="step-n">04</div><div class="step-icon" aria-hidden="true">▣</div><h3>View it on a phone</h3><p>A phone on the same Wi-Fi can show the result and an in-page alert when a confident detection is made.</p></article>
+    </div>
+    <div class="reality-note"><span aria-hidden="true">ⓘ</span><p><b>What “AI” means here:</b> The model has learnt patterns from training photos. It makes a prediction; it does not understand whether an object should actually be thrown away.</p></div>
+  </section>
+
+  <section class="section section-tint" id="inside">
+    <div class="shell">
+      <div class="section-heading"><span class="section-label">02 / THE BUILD</span><h2>Simple technology.<br/>A clever connection.</h2></div>
+      <div class="hardware-grid">
+        <article class="hardware-card"><span class="hardware-icon">▣</span><span class="hardware-tag">Processing</span><h3>Raspberry Pi 5</h3><p>The small computer runs our Python code, receives camera images and makes predictions using a trained model.</p></article>
+        <article class="hardware-card"><span class="hardware-icon">◎</span><span class="hardware-tag">Vision</span><h3>USB webcam</h3><p>The camera captures the scene. Keeping its angle and lighting consistent helps the model.</p></article>
+        <article class="hardware-card"><span class="hardware-icon">⌘</span><span class="hardware-tag">Software</span><h3>Python + OpenCV</h3><p>Our image-processing and machine-learning code classifies examples using the photos we collected.</p></article>
+        <article class="hardware-card"><span class="hardware-icon">▤</span><span class="hardware-tag">Connection</span><h3>Phone web page</h3><p>The Raspberry Pi serves a page that can be opened on a phone on the same local Wi-Fi network.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="section shell demo-section">
+    <div class="demo-copy"><span class="section-label">03 / TRY THE IDEA</span><h2>What might the<br/>AI say?</h2><p>Choose an example below to explore the three categories used in our project.</p><p class="demo-warning">This is an <strong>illustration only</strong>. These buttons do not connect to the actual robot, camera or phone controller.</p></div>
+    <div class="demo-panel">
+      <div class="demo-topline"><span class="live-pulse"></span> EDUCATIONAL SIMULATION <span class="demo-faux-time">NOT LIVE</span></div>
+      <div class="object-chips" role="group" aria-label="Choose sample object">
+        <button type="button" class="object-chip selected" data-case="paper" aria-pressed="true">Crumpled paper</button>
+        <button type="button" class="object-chip" data-case="pencil" aria-pressed="false">Pencil</button>
+        <button type="button" class="object-chip" data-case="empty" aria-pressed="false">Empty view</button>
+      </div>
+      <div class="example-result" aria-live="polite">
+        <div class="example-icon" id="example-icon" aria-hidden="true">▤</div>
+        <div><span class="result-overline">EXAMPLE CLASSIFICATION</span><h3 id="example-label">Rubbish</h3><p id="example-description">A paper ball could be classified as rubbish. We would still check whether the prediction is correct.</p></div>
+      </div>
+      <div class="demo-foot"><span>How sure is the real AI?</span><p>It shows a confidence score. Some of our test predictions were about 50–70%, so the model needs further improvement.</p></div>
+    </div>
+  </section>
+
+  <section class="section showcase" id="demonstration">
+    <div class="shell showcase-grid">
+      <div><span class="section-label light">04 / STUDENT DEMONSTRATION</span><h2>See the prototype<br/>in action.</h2><p>We are presenting the technology as it is today — without pretending the unfinished collection system already works.</p></div>
+      <ol class="demo-list">
+        <li><strong>Show our prepared test area</strong><span>Place an example object in view of the webcam.</span></li>
+        <li><strong>Watch the AI prediction</strong><span>See whether it says rubbish, not rubbish, or empty.</span></li>
+        <li><strong>Open the phone page</strong><span>With the phone and Pi on the same Wi-Fi, view the result.</span></li>
+        <li><strong>Discuss an uncertain result</strong><span>If it makes a mistake, explain that more training is needed.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="limitations" class="section shell">
+    <div class="section-heading"><span class="section-label">05 / WHAT WE LEARNT</span><h2>Good ideas still<br/>have limitations.</h2><p>Being open about what does not work yet is part of being a good inventor.</p></div>
+    <div class="limitation-grid">
+      <article><span class="num">01</span><h3>AI can be uncertain</h3><p>Some test predictions have shown only around 50–70% confidence. A confident answer can also be wrong.</p></article>
+      <article><span class="num">02</span><h3>The surroundings matter</h3><p>Lighting, angle, backgrounds and unfamiliar rubbish can change the prediction.</p></article>
+      <article><span class="num">03</span><h3>It cannot collect rubbish yet</h3><p>The current proof of concept does not drive, open a door, vacuum rubbish or automatically pick things up.</p></article>
+      <article><span class="num">04</span><h3>Phone alerts have limits</h3><p>The prototype uses a local phone web page. Alerts appear in the page when it is open; these are not background push notifications.</p></article>
+    </div>
+  </section>
+
+  <section id="future" class="section section-tint future-section">
+    <div class="shell future-grid">
+      <div><span class="section-label">06 / OUR NEXT CHAPTER</span><h2>What could<br/>come next?</h2><p>These are <strong>future ideas</strong>, not features of the demonstration today.</p><div class="future-stamp">NEXT VERSION <span aria-hidden="true">↗</span></div></div>
+      <div class="roadmap">
+        <article><div class="roadmap-bullet">1</div><div><h3>Make detection better</h3><p>Gather more varied photos, improve the test area, and validate predictions on objects the AI has never seen.</p></div></article>
+        <article><div class="roadmap-bullet">2</div><div><h3>Add safe movement</h3><p>Use our planned 360° wheel servos, positional servo door and PCA9685 controller after proper power and safety testing.</p></div></article>
+        <article><div class="roadmap-bullet">3</div><div><h3>Collect and monitor rubbish</h3><p>Test a floor-level scoop or other intake, then add an ultrasonic fill sensor, two RGB LED eyes and a buzzer.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell faq-section" id="questions"><div class="section-heading"><span class="section-label">07 / QUICK QUESTIONS</span><h2>Curious? We have answers.</h2></div>
+    <div class="faq-list">
+      <details><summary>Does the robot really use artificial intelligence?<span>+</span></summary><p>Yes. We trained an image classifier with labelled sample photos. The model uses the patterns it learnt to predict one of three categories.</p></details>
+      <details><summary>Does it pick up rubbish already?<span>+</span></summary><p>Not yet. Our working goal for this stage is recognition and sharing the result with a phone. Physical collection is a future project.</p></details>
+      <details><summary>Is it always correct?<span>+</span></summary><p>No. Some predictions are uncertain or incorrect. Different objects and lighting can make recognition harder. We need better training data and proper testing.</p></details>
+      <details><summary>Is the QR-code website the phone controller?<span>+</span></summary><p>No. This public webpage explains our school project. The actual camera/phone controller is a separate local application running on the Raspberry Pi, accessible only to devices on its network.</p></details>
+      <details><summary>What is a proof of concept?<span>+</span></summary><p>It is an early demonstration that tests whether the main idea is possible, before building a complete and reliable product.</p></details>
+    </div>
+  </section>
+  <section class="closing"><div class="shell closing-content"><span>STUDENT MAKERS · REAL-WORLD THINKING</span><h2>Every invention<br/>starts somewhere.</h2><p>We began by asking whether a tiny computer could recognise possible rubbish and share that information with us. This is our first step.</p><a href="#top" class="btn btn-light">Back to top ↑</a></div></section>
+</main>
+<footer class="footer"><div class="shell footer-inner"><div class="footer-brand"><img src="assets/qosmo-crest.png" width="48" height="59" alt=""/><span><b>Qosmo International School</b><small>STEM student project · 2026</small></span></div><span class="footer-note">Educational proof of concept · Detection & phone display</span></div></footer>
+</body>
+</html>
